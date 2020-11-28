@@ -1,50 +1,53 @@
 import React from 'react';
 import { View, Text, SafeAreaView, StyleSheet, ImageBackground, 
-         StatusBar, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+         StatusBar, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { Item, Input } from 'native-base';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const App = () => {
   return(
     <SafeAreaView style={styles.mainContainer}>
       <StatusBar hidden={true}/>
+      <KeyboardAvoidingView behavior='position' style={{ flex: 1 }} keyboardVerticalOffset={-hp('20%')} >
       <ImageBackground source={require('./Images/sign_up_bg.jpeg')} style={styles.backgroundImage} imageStyle={{ resizeMode: 'stretch' }}>
 
       <View style={styles.mainContentContainer}>
         
         <View style={{ height: '30%', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 40 }}>
+          <Text style={{ color: '#fff', fontWeight: '800', fontSize: wp('11%') }}>
             Sign Up
           </Text>
           <TouchableOpacity>
-            <FontAwesomeIcon icon={faPlusCircle} size={100} style={{ color: '#fff' }} />
+            <FontAwesomeIcon icon={faPlusCircle} size={wp('28%')} style={{ color: '#fff' }} />
           </TouchableOpacity>
         </View>
+        
         <View style={{ width: '100%', height: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: 10, height: '18%' }}>
-            <Input placeholder='Full Name' />
+          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: wp('3%'), height: '18%' }}>
+            <Input placeholder='Full Name' autoCapitalize='words' />
           </Item>
 
-          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: 10, height: '18%' }}>
+          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: wp('3%'), height: '18%' }}>
             <Input placeholder='Gender' />
           </Item>
 
-          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: 10, height: '18%' }}>
-            <Input placeholder='Email' />
+          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: wp('3%'), height: '18%' }}>
+            <Input placeholder='Email' autoCapitalize='none' />
           </Item>
 
-          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: 10, height: '18%' }}>
-            <Input placeholder='Password' secureTextEntry />
+          <Item rounded style={{ backgroundColor: '#fff', paddingLeft: wp('3%'), height: '18%' }}>
+            <Input placeholder='Password' secureTextEntry autoCapitalize='none' />
           </Item>
 
         </View>
 
         <TouchableOpacity style={{ width: '100%', height: '9%', backgroundColor: '#fff',
            alignItems: 'center', flexDirection: 'column', justifyContent: 'center',
-           borderRadius: 30 }} onPress={() => console.log('Hello')} activeOpacity={0.5}
+           borderRadius: wp('10%') }} onPress={() => console.log('Hello')} activeOpacity={0.5}
              >
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#f88a00' }} >
+          <Text style={{ fontSize: wp('6.5%'), fontWeight: '800', color: '#f88a00' }} >
             Sign Up
           </Text>
         </TouchableOpacity>
@@ -52,6 +55,7 @@ const App = () => {
       </View>
 
       </ImageBackground>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -68,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: 640
+    minHeight: hp('100%')
   },
   mainContentContainer: {
     width: '90%',
